@@ -5,7 +5,7 @@
         {{ link_to("producttypes", "&larr; Go Back") }}
     </li>
     <li class="pull-right">
-        {{ submit_button("Save", "class": "btn btn-success") }}
+        {{ submit_button("Add product type", "class": "btn btn-success") }}
     </li>
 </ul>
 
@@ -16,7 +16,7 @@
 
     <div class="clearfix">
         <label for="name">Name</label>
-        {{ text_field("name", "size": 24, "maxlength": 70) }}
+        {{ text_field("name", "size": 24, "maxlength": 70, "class":"form-control") }}
     </div>
 
 </div>

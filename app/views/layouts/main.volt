@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">INVO</a>
+            <a class="navbar-brand" href="#">STORE</a>
         </div>
         {{ elements.getMenu() }}
     </div>

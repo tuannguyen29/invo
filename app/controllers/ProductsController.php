@@ -33,6 +33,7 @@ class ProductsController extends ControllerBase
     public function searchAction()
     {
         $numberPage = 1;
+
         if ($this->request->isPost()) {
             $query = Criteria::fromInput(
                 $this->di,

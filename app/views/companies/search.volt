@@ -19,6 +19,7 @@
             <th>Telephone</th>
             <th>Address</th>
             <th>City</th>
+            <th colspan="2"></th>
         </tr>
     </thead>
 {% endif %}

@@ -42,36 +42,3 @@ $ cat schemas/invo.sql | mysql -u root invo
 ```
 
 Also you can override application config by creating `app/config/config.ini.dev` (already gitignored).
-
-## Contributing
-
-See [CONTRIBUTING.md][7]
-
-## Sponsors
-
-Become a sponsor and get your logo on our README on Github with a link to your site. [[Become a sponsor](https://opencollective.com/phalcon#sponsor)]
-
-<a href="https://opencollective.com/phalcon/#contributors">
-<img src="https://opencollective.com/phalcon/tiers/sponsors.svg?avatarHeight=48&width=800">
-</a>
-
-## Backers
-
-Support us with a monthly donation and help us continue our activities. [[Become a backer](https://opencollective.com/phalcon#backer)]
-
-<a href="https://opencollective.com/phalcon/#contributors">
-<img src="https://opencollective.com/phalcon/tiers/backers.svg?avatarHeight=48&width=800&height=200">
-</a>
-
-## License
-
-Invo is open-sourced software licensed under the [New BSD License][8]. © Phalcon Framework Team and contributors
-
-[1]: https://phalcon.io/
-[2]: http://httpd.apache.org/
-[3]: http://httpd.apache.org/docs/current/mod/mod_rewrite.html
-[4]: http://nginx.org/
-[5]: https://github.com/phalcon/cphalcon/releases
-[6]: https://www.mysql.com/
-[7]: https://github.com/phalcon/invo/blob/master/CONTRIBUTING.md
-[8]: https://github.com/phalcon/invo/blob/master/docs/LICENSE.md

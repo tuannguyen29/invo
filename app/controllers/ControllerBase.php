@@ -6,7 +6,7 @@ class ControllerBase extends Controller
 {
     protected function initialize()
     {
-        $this->tag->prependTitle('INVO | ');
+        $this->tag->prependTitle('STORE | ');
 
         $this->view->setTemplateAfter('main');
     }

@@ -60,7 +60,7 @@ class CompaniesController extends ControllerBase
         $paginator = new Paginator(
             [
                 "data"  => $companies,
-                "limit" => 10,
+                "limit" => 2,
                 "page"  => $numberPage,
             ]
         );

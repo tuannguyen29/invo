@@ -2,8 +2,8 @@
 {{ content() }}
 
 <div class="jumbotron">
-    <h1>Welcome to INVO</h1>
-    <p>INVO is a revolutionary application to create invoices online for free.
+    <h1>Welcome to STORE</h1>
+    <p>STORE is a revolutionary application to create invoices online for free.
     Receive online payments from your clients and improve your cash flow</p>
     <p>{{ link_to('register', 'Try it for Free &raquo;', 'class': 'btn btn-primary btn-large btn-success') }}</p>
 </div>

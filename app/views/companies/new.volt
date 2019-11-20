@@ -19,7 +19,7 @@
             {{ element }}
         {% else %}
             <div class="form-group">
-                {{ element.label() }}
+                {{ element.label(['class': 'label-control']) }}
                 {{ element.render(['class': 'form-control']) }}
             </div>
         {% endif %}

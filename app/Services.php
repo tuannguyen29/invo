@@ -112,9 +112,9 @@ class Services extends \Base\Services
     protected function initFlash()
     {
         return new FlashSession([
-            'error' => 'alert alert-danger',
+            'error'   => 'alert alert-danger',
             'success' => 'alert alert-success',
-            'notice' => 'alert alert-info',
+            'notice'  => 'alert alert-info',
             'warning' => 'alert alert-warning'
         ]);
     }
@@ -125,5 +125,10 @@ class Services extends \Base\Services
     protected function initElements()
     {
         return new Elements();
+    }
+
+    protected function initTemplates()
+    {
+        return new Templates();
     }
 }
