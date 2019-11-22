@@ -17,7 +17,5 @@
     {{ flash.output() }}
     {{ content() }}
     <hr>
-    <footer>
-        <p>&copy; Company 2017</p>
-    </footer>
+    {{ partial('partials/footer') }}
 </div>

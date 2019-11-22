@@ -109,11 +109,13 @@ class Services extends \Base\Services
             case 'database':
                 $connection = $this->initSharedDb();
                 $table = $this->get('config')->session->table ?? 'session_data';
+                $maxlifetime = (int) $this->get('config')->session->maxlifetime ?? ini_get('session.gc_maxlifetime');
 
                 $session = new Database(
                     [
-                        'db'    => $connection,
-                        'table' => $table,
+                        'db'          => $connection,
+                        'table'       => $table,
+                        'maxlifetime' => $maxlifetime
                     ]
                 );
 

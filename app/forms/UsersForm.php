@@ -11,6 +11,12 @@ class UsersForm extends Form
 {
     public function initialize($entity = null, $options = null)
     {
+        if (isset($options['edit'])) {
+            $this->add(
+                new Hidden("id")
+            );
+        }
+
         // Name
         $name = new Text('name');
         $name->setLabel('Your Full Name');

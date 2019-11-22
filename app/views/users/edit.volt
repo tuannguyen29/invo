@@ -1,3 +1,4 @@
+{{ content() }}
 
 {{ form("users/update", 'role': 'form') }}
 
@@ -9,8 +10,6 @@
             {{ submit_button("Save", "class": "btn btn-success") }}
         </li>
     </ul>
-
-    {{ content() }}
 
     <h2>Edit User</h2>
 

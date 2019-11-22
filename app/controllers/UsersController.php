@@ -60,7 +60,7 @@ class UsersController extends ControllerBase
         }
     }
 
-    public function updateAction($id)
+    public function updateAction()
     {
         if (!$this->request->isPost()) {
             return $this->dispatcher->forward(
@@ -73,11 +73,11 @@ class UsersController extends ControllerBase
 
         $id = $this->request->getPost("id", "int");
 
-        $company = Users::findFirstById($id);
-        var_dump($company);
+        $user = Users::findFirstById($id);
 
-        if (!$company) {
-            $this->flash->error("Company does not exist");
+        if (!$user) {
+            die;
+            $this->flash->error("User does not exist");
 
             return $this->dispatcher->forward(
                 [
@@ -87,10 +87,16 @@ class UsersController extends ControllerBase
             );
         }
 
-        $form = new CompaniesForm;
+
+        $form = new UsersForm;
+        echo '<pre>';
+        var_dump($this->request->getPost());
+        // die;
 
         $data = $this->request->getPost();
-        if (!$form->isValid($data, $company)) {
+        print_r($form->isValid($data, $user));
+        if (! $form->isValid($data, $user)) {
+            die;
             foreach ($form->getMessages() as $message) {
                 $this->flash->error($message);
             }
@@ -98,31 +104,33 @@ class UsersController extends ControllerBase
             return $this->dispatcher->forward(
                 [
                     "controller" => "users",
-                    "action"     => "new",
+                    "action"     => "update",
                 ]
             );
         }
+        // die;
 
-        if ($company->save() == false) {
-            foreach ($company->getMessages() as $message) {
+        if ($user->save() == false) {
+            die;
+            foreach ($user->getMessages() as $message) {
                 $this->flash->error($message);
             }
 
             return $this->dispatcher->forward(
                 [
-                    "controller" => "companies",
-                    "action"     => "new",
+                    "controller" => "users",
+                    "action"     => "update",
                 ]
             );
         }
 
         $form->clear();
 
-        $this->flash->success("Company was updated successfully");
+        $this->flash->success("User was updated successfully");
 
         return $this->dispatcher->forward(
             [
-                "controller" => "companies",
+                "controller" => "users",
                 "action"     => "index",
             ]
         );

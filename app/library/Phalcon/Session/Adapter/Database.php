@@ -39,6 +39,8 @@ class Database extends Adapter implements AdapterInterface
      */
     protected $connection;
 
+    protected $maxLifetime;
+
     /**
      * {@inheritdoc}
      *
@@ -69,6 +71,9 @@ class Database extends Adapter implements AdapterInterface
                 $options[$oColumn] = $column;
             }
         }
+
+        $this->maxLifetime = $options['maxlifetime'];
+        unset($options['maxlifetime']);
 
         parent::__construct($options);
 
@@ -113,12 +118,12 @@ class Database extends Adapter implements AdapterInterface
      */
     public function read($sessionId)
     {
-        $maxLifetime = (int) ini_get('session.gc_maxlifetime');
-        
+        $maxLifetime = $this->maxLifetime;
+
         if (!$this->isStarted()) {
             return false;
         }
-        
+
         $options = $this->getOptions();
         $row = $this->connection->fetchOne(
             sprintf(
@@ -161,7 +166,7 @@ class Database extends Adapter implements AdapterInterface
             Db::FETCH_NUM,
             [$sessionId]
         );
-        
+
         if ($row[0] > 0) {
             return $this->connection->execute(
                 sprintf(
@@ -174,11 +179,11 @@ class Database extends Adapter implements AdapterInterface
                 [$data, time(), $sessionId]
             );
         }
-        
+
         if (!$this->isStarted()) {
             return false;
         }
-            
+
         return $this->connection->execute(
             sprintf(
                 'INSERT INTO %s (%s, %s, %s, %s) VALUES (?, ?, ?, NULL)',
