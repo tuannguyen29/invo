@@ -1,10 +1,25 @@
+Table of contents
+- [Cấu trúc (1h)](#c-u-tr-c--1h-)
+- [Luồng hoạt động (Workflow) (1h)](#lu-ng-ho-t---ng--workflow---1h-)
+- [Config (1h)](#config--1h-)
+- [Router (2h)](#router--2h-)
+- [Module (2h)](#module--2h-)
+- [Controller (1h)](#controller--1h-)
+- [Model (1h)](#model--1h-)
+- [View (2h)](#view--2h-)
+- [Layouts (1.5h)](#layouts--15h-)
+- [Partial (1.5h)](#partial--15h-)
+- [Paination (1h)](#paination--1h-)
+- [Library (1h)](#library--1h-)
+- [Session (2h)](#session--2h-)
+- [Demo STORE Application](#demo-store-application)
 
 **Thứ 3, 19/11/2019**
 ## Cấu trúc (1h)
 + Phalcon không có một cấu trúc cụ thể, nên có thể tự define 1 cấu trúc theo ý mình.
 + Ở đây chúng ta sẽ sử dụng mô hình MVC được đề xuất bởi Phalcon.
 
-![structure_folder_phalcon](https://i.imgur.com/8nlOpXu.jpg)
+    ![structure_folder_phalcon](https://i.imgur.com/8nlOpXu.jpg)
 
 ## Luồng hoạt động (Workflow) (1h)
 Workflow trong Phalcon hoạt động như sau:
@@ -70,7 +85,14 @@ phalcon create-module module_name
 + Controller accept các input từ view và tương tác với model liên quan.
 + Nó giúp update trạng thái của model bằng cách gửi các câu lệnh (ORM) tới model.
 + Pass data được lấy từ Model ra View.
-+ Controller hoạt động như trung tâm giữa Model và View.
+    ```
+    public function indexAction()
+    {
+        $users = Users::find();
+        $this->view->users = $users;
+    }
+    ```
++ Controller đóng vai trò hoạt động như một trung tâm giữa Model và View.
 
 ## Model (1h)
 + Chứa các logic.
@@ -164,16 +186,19 @@ class ControllerBase extends Controller
 }
 ```
 
-`$this->view->setTemplateAfter('main');` sẽ giúp thứ tự render layout như sau:
+2. Khi đó `IndexController` sẽ extends `ControllerBase`, rồi các controller khác cũng sẽ tương tự.
+
+Khi truy cập trang chủ có URL `http://your-domain.com/` thì
+
+`$this->view->setTemplateAfter('main')` sẽ giúp thứ tự render layout như sau:
 
     => `views/index.volt` 
     => `views/layouts/main.volt` 
     => `views/index/index.volt`
 
-2. Khi đó `IndexController` sẽ extends `ControllerBase` rồi các controller khác cũng sẽ tương tự.
 
 ## Partial (1.5h)
-+ Partial template là một cách khác để quản lý các phần layout có thể sử dụng lại ở các trang khác nhau (ví dụ như footer, header, sidebar...)
++ `Partial template` là một cách khác để quản lý các phần layout có thể sử dụng lại ở các trang khác nhau (ví dụ như footer, header, sidebar...)
 
 Cách để include một partial trong layout `views/layouts/main.volt`:
 ```
@@ -204,12 +229,26 @@ hay nói cách khác nó giúp trình bày dữ liệu theo kiểu phân trang.
 
 Cách để add một library vào project:
 1. Tạo hoặc clone các libraries đặt vào project `app/library`, ví dụ ở dưới đây sẽ tạo  một class `Elements` để render các tabs ra view.
+
+    ![Imgur](https://i.imgur.com/gzmOW7m.jpg)
+
 2. Đăng kí class `Elements` vào file `app/Services.php` để bind nó vào `container service`
     ```
     protected function initElements()
     {
         return new Elements();
     }
+    ```
+
+    Hoặc 1 cách khác là chúng ta sẽ đăng kí `namespace` cho library trong `app/config/loader.php`
+    ```
+    $loader = new \Phalcon\Loader();
+
+    $loader->registerNamespaces(
+        [
+            'Phalcon\Session\Adapter\Database' => APP_PATH . 'app/library/Phalcon/Session/Adapter/Database.php',
+        ]
+    );
     ```
 3. Sử dụng library trong `controller`
     ```
@@ -245,8 +284,18 @@ Cách để add một library vào project:
     ...
     maxlifetime = 1440
     ```
++ Set một session data
+    ```
+    $this->session->set(
+        'auth',
+        [
+            'id'   => $user->id,
+            'name' => $user->name,
+        ]
+    );
+    ```
 
-## end
+## End.
 
 **thứ 6, 22/11/2019**
 
