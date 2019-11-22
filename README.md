@@ -34,7 +34,7 @@ ex: [http://phalcon.local/products/get/1](http://phalcon.local/products/get/1)
 + Controller accept các input từ view và tương tác với model liên quan.
 + Nó giúp update trạng thái của model bằng cách gửi các câu lệnh (ORM) tới model.
 + Pass data được lấy từ Model ra View.
-++ Controller hoạt động như một trung gian giữa Model và View.
+-- > Controller hoạt động như một trung gian giữa Model và View.
 
 ## Model (1h)
 + Chứa các logic.
@@ -77,8 +77,8 @@ hay nói cách khác nó giúp trình bày dữ liệu theo kiểu phân trang.
 + Session là lưu trữ thông tin từ phía server-side giúp tương tác giữa user với website.
 + Mỗi session sẽ được xác định duy nhất với 1 Session ID.
 + Có 2 cách để triển khai session trong Phalcon:
-    ++ File: Phalcon\Session\Adapter\Files:class
-    ++ Database: Phalcon\Session\Adapter\Database::class
+    -- File: Phalcon\Session\Adapter\Files:class
+    -- Database: Phalcon\Session\Adapter\Database::class
 + Setup .ini để set on/off store session vào db.
 + Lifetime mặc định là: session.gc_maxlifetime = 1440s
 
