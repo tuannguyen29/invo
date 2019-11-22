@@ -8,10 +8,10 @@
 ## Luồng hoạt động (Workflow) (1h)
 Workflow trong Phalcon hoạt động như sau:
 User tương tác với View với sự trợ giúp của một số method/event.
-    --> Các method/event này được xử lý bởi Controller.
-    --> Controller truy cập vào Model theo các action của user.
-    --> Model trả ra một tập dữ liệu (1). (Model không có tương tác trực tiếp với View)
-    --> Controller lấy tập dữ liệu từ (1) trả về và hiển thị ra View.
+    + Các method/event này được xử lý bởi Controller.
+    + Controller truy cập vào Model theo các action của user.
+    + Model trả ra một tập dữ liệu (1). (Model không có tương tác trực tiếp với View)
+    + Controller lấy tập dữ liệu từ (1) trả về và hiển thị ra View.
 Chu kỳ request và reponse cứ lặp đi lặp lại như vậy trong ứng dụng.
 
 
@@ -21,7 +21,7 @@ Chu kỳ request và reponse cứ lặp đi lặp lại như vậy trong ứng d
 
 ## Router (2h)
 + Router cho phép định nghĩa các route ánh xạ với các action controller khi nhận được request.
---> pattern: /:controller/:action/:params
+++ pattern: /:controller/:action/:params
 ex: [http://phalcon.local/products/get/1](http://phalcon.local/products/get/1)
 
 ## Module (2h)
@@ -34,7 +34,7 @@ ex: [http://phalcon.local/products/get/1](http://phalcon.local/products/get/1)
 + Controller accept các input từ view và tương tác với model liên quan.
 + Nó giúp update trạng thái của model bằng cách gửi các câu lệnh (ORM) tới model.
 + Pass data được lấy từ Model ra View.
---> Controller hoạt động như một trung gian giữa Model và View.
+++ Controller hoạt động như một trung gian giữa Model và View.
 
 ## Model (1h)
 + Chứa các logic.
@@ -70,6 +70,7 @@ hay nói cách khác nó giúp trình bày dữ liệu theo kiểu phân trang.
 + Nơi chứa các Third-party libraries như (PHPMailer, ...)
 + Hoặc chứa các common, helper...
 + Link [github](https://github.com/tuannguyen29/incubator/tree/master/Library/Phalcon)
+
 ![enter image description here](https://live.staticflickr.com/65535/49098491213_77400968be_b.jpg)
 
 ## Session (2h)
