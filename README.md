@@ -1,18 +1,13 @@
+
 **Thứ 3, 19/11/2019**
 ## Cấu trúc (1h)
 + Phalcon không có một cấu trúc cụ thể, nên có thể tự define 1 cấu trúc theo ý mình.
 + Sử dụng mô hình MVC.
-![enter image description here](https://i.ytimg.com/vi/9QjEhh0zGjg/maxresdefault.jpg)
-
 
 ## Luồng hoạt động (Workflow) (1h)
 Workflow trong Phalcon hoạt động như sau:
-User tương tác với View với sự trợ giúp của một số method/event.
-    + Các method/event này được xử lý bởi Controller.
-    + Controller truy cập vào Model theo các action của user.
-    + Model trả ra một tập dữ liệu (1). (Model không có tương tác trực tiếp với View)
-    + Controller lấy tập dữ liệu từ (1) trả về và hiển thị ra View.
-Chu kỳ request và reponse cứ lặp đi lặp lại như vậy trong ứng dụng.
+
+![sequence diagram phalconphp](https://i.imgur.com/lihyuzu.jpg)
 
 
 ## Config (1h)
@@ -21,7 +16,7 @@ Chu kỳ request và reponse cứ lặp đi lặp lại như vậy trong ứng d
 
 ## Router (2h)
 + Router cho phép định nghĩa các route ánh xạ với các action controller khi nhận được request.
-++ pattern: /:controller/:action/:params
++ pattern: /:controller/:action/:params
 ex: [http://phalcon.local/products/get/1](http://phalcon.local/products/get/1)
 
 ## Module (2h)
@@ -34,7 +29,7 @@ ex: [http://phalcon.local/products/get/1](http://phalcon.local/products/get/1)
 + Controller accept các input từ view và tương tác với model liên quan.
 + Nó giúp update trạng thái của model bằng cách gửi các câu lệnh (ORM) tới model.
 + Pass data được lấy từ Model ra View.
--- > Controller hoạt động như một trung gian giữa Model và View.
+  -  --> Controller hoạt động như một trung gian giữa Model và View.
 
 ## Model (1h)
 + Chứa các logic.
@@ -71,20 +66,22 @@ hay nói cách khác nó giúp trình bày dữ liệu theo kiểu phân trang.
 + Hoặc chứa các common, helper...
 + Link [github](https://github.com/tuannguyen29/incubator/tree/master/Library/Phalcon)
 
-![enter image description here](https://live.staticflickr.com/65535/49098491213_77400968be_b.jpg)
+![enter image description here](https://i.imgur.com/8dqU7Nz.png)
 
 ## Session (2h)
 + Session là lưu trữ thông tin từ phía server-side giúp tương tác giữa user với website.
 + Mỗi session sẽ được xác định duy nhất với 1 Session ID.
 + Có 2 cách để triển khai session trong Phalcon:
-    -- File: Phalcon\Session\Adapter\Files:class
-    -- Database: Phalcon\Session\Adapter\Database::class
+    - File: Phalcon\Session\Adapter\Files:class
+    - Database: Phalcon\Session\Adapter\Database::class
 + Setup .ini để set on/off store session vào db.
 + Lifetime mặc định là: session.gc_maxlifetime = 1440s
 
 ## end
 
-## STORE Application
+**thứ 6, 22/11/2019**
+
+## Demo STORE Application
 
 [Phalcon][1] is a web framework delivered as a C extension providing high
 performance and lower resource consumption.
