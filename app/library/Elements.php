@@ -37,6 +37,11 @@ class Elements extends Component
     ];
 
     private $_tabs = [
+        'Users' => [
+            'controller' => 'users',
+            'action' => 'index',
+            'any' => true
+        ],
         'Invoices' => [
             'controller' => 'invoices',
             'action' => 'index',

@@ -4,14 +4,13 @@ error_reporting(E_ALL);
 
 use Phalcon\Mvc\Application;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
+use Phalcon\Di\FactoryDefault;
 
 try {
     define(
         'APP_PATH',
         realpath('..') . '/'
     );
-
-
 
     /**
      * Read the configuration
@@ -26,8 +25,6 @@ try {
         $config->merge($override);
     }
 
-
-
     /**
      * Auto-loader configuration
      */
@@ -36,6 +33,11 @@ try {
     $application = new Application(
         new Services($config)
     );
+
+    /**
+     * Handle routes
+     */
+    require APP_PATH . 'app/config/router.php';
 
     // NGINX - PHP-FPM already set PATH_INFO variable to handle route
     $response = $application->handle(

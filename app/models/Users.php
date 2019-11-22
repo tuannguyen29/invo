@@ -10,7 +10,7 @@ class Users extends Model
     public function validation()
     {
         $validator = new Validation();
-        
+
         $validator->add(
             'email',
             new EmailValidator(
@@ -35,7 +35,12 @@ class Users extends Model
                 ]
             )
         );
-        
+
         return $this->validate($validator);
+    }
+
+    public function getPassword()
+    {
+        return '';
     }
 }

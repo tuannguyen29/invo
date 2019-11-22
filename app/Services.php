@@ -1,14 +1,16 @@
 <?php
 
-use Phalcon\Mvc\View;
 use Phalcon\DI\FactoryDefault;
-use Phalcon\Mvc\Dispatcher;
-use Phalcon\Mvc\Url as UrlProvider;
-use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
-use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
-use Phalcon\Session\Adapter\Files as SessionAdapter;
-use Phalcon\Flash\Session as FlashSession;
 use Phalcon\Events\Manager as EventsManager;
+use Phalcon\Flash\Session as FlashSession;
+use Phalcon\Mvc\Dispatcher;
+use Phalcon\Mvc\Model\Metadata\Memory as MetaData;
+use Phalcon\Mvc\Url as UrlProvider;
+use Phalcon\Mvc\View;
+use Phalcon\Mvc\Router;
+use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
+use Phalcon\Session\Adapter\Database;
+use Phalcon\Session\Adapter\Files as SessionAdapter;
 
 class Services extends \Base\Services
 {
@@ -101,9 +103,45 @@ class Services extends \Base\Services
      */
     protected function initSession()
     {
-        $session = new SessionAdapter();
-        $session->start();
-        return $session;
+        $adapter = $this->get('config')->session->adapter ?? 'Files';
+
+        switch (strtolower($adapter)) {
+            case 'database':
+                $connection = $this->initSharedDb();
+                $table = $this->get('config')->session->table ?? 'session_data';
+
+                $session = new Database(
+                    [
+                        'db'    => $connection,
+                        'table' => $table,
+                    ]
+                );
+
+                $session->start();
+
+                return $session;
+
+            default:
+                $session = new SessionAdapter();
+                $session->start();
+
+                return $session;
+        }
+    }
+
+    /**
+     * Handle routes.
+     *
+     * @return object
+     */
+    protected function initSharedRouter()
+    {
+        $router = new Router();
+        $router->setUriSource(
+            Router::URI_SOURCE_SERVER_REQUEST_URI
+        );
+
+        return $router;
     }
 
     /**
