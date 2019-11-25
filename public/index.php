@@ -6,7 +6,9 @@ use Phalcon\Mvc\Application;
 use Phalcon\Config\Adapter\Ini as ConfigIni;
 use Phalcon\Di\FactoryDefault;
 
+
 try {
+
     define(
         'APP_PATH',
         realpath('..') . '/'
@@ -15,15 +17,7 @@ try {
     /**
      * Read the configuration
      */
-    $config = new ConfigIni(APP_PATH . 'app/config/config.ini');
-
-    if (is_readable(APP_PATH . 'app/config/config.ini.dev')) {
-        $override = new ConfigIni(
-            APP_PATH . 'app/config/config.ini.dev'
-        );
-
-        $config->merge($override);
-    }
+    require APP_PATH . 'app/config/config.php';
 
     /**
      * Auto-loader configuration
