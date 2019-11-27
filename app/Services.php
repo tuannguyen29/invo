@@ -1,5 +1,8 @@
 <?php
 
+// use Phalcon\Mvc\Collection\Manager;
+// use Phalcon\Db\Adapter\MongoDB\Client;
+
 use Phalcon\DI\FactoryDefault;
 use Phalcon\Events\Manager as EventsManager;
 use Phalcon\Flash\Session as FlashSession;
@@ -88,6 +91,11 @@ class Services extends \Base\Services
         unset($config['adapter']);
 
         return new $dbClass($config);
+    }
+
+    protected function initSharedCollectionManager()
+    {
+        return new \MongoDB\Client();
     }
 
     /**

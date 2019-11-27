@@ -24,6 +24,13 @@ $config = new \Phalcon\Config([
         'adapter'     => 'Database',
         'table'       => 'session_data',
         'maxlifetime' => '1440',
+    ],
+
+    'mongo' => [
+        'username' => 'tuannguyen2',
+        'password' => '123456789',
+        'host'     => 'localhost',
+        'dbname'   => 'mongo_color',
     ]
 ]);
 

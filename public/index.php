@@ -19,6 +19,8 @@ try {
      */
     require APP_PATH . 'app/config/config.php';
 
+    require_once __DIR__ . "../../vendor/autoload.php";
+
     /**
      * Auto-loader configuration
      */

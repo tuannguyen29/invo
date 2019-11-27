@@ -11,3 +11,5 @@ Thumbs.db
 *.sublime-project
 *.sublime-workspace
 .idea/
+
+/vendor/

@@ -15,7 +15,7 @@ Table of contents
 - [Demo STORE Application](#demo-store-application)
 
 **Thứ 3, 19/11/2019**
-## Cấu trúc folder trong project
+## 1. Cấu trúc folder trong project
 + Phalcon không có một cấu trúc cụ thể, nên có thể tự define 1 cấu trúc theo ý mình.
 + Ở đây chúng ta sẽ sử dụng mô hình MVC được đề xuất bởi Phalcon.
 

@@ -1,0 +1,14 @@
+{
+    "name": "admin/store",
+    "description": "This is admin store.",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Tuan Nguyen",
+            "email": "tuan.ngminh29@gmail.com"
+        }
+    ],
+    "require": {
+        "mongodb/mongodb": "^1.5"
+    }
+}

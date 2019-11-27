@@ -5,6 +5,8 @@ $loader = new \Phalcon\Loader();
 $loader->registerNamespaces(
     [
         'Phalcon\Session\Adapter\Database' => APP_PATH . 'app/library/Phalcon/Session/Adapter/Database.php',
+        'Phalcon\Db\Adapter\Mongo'         => APP_PATH . 'app/library/Phalcon/Db/Adapter/Mongo',
+        'Phalcon\Db\Adapter\MongoDB'       => APP_PATH . 'app/library/Phalcon/Db/Adapter/MongoDB',
     ]
 );
 
